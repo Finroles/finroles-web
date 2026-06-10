@@ -145,3 +145,70 @@
   padding-right: 0 !important;
   pointer-events: none;
 }
+
+/* ─── Partner Logos / Trust Strip ─────────────────────────────── */
+.partner-logos-section {
+  /* One shade lighter than pure black to read as a distinct band */
+  background-color: hsl(0 0% 5%);
+  padding: 3.5rem 1.5rem;
+}
+
+.partner-logos-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.partner-logos-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: hsl(var(--color-muted) / 0.5);
+  font-family: var(--font-body), sans-serif;
+}
+
+.partner-logos-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem 3.5rem; /* row-gap column-gap — minimum 48px */
+}
+
+.partner-logo-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-logo-img {
+  width: 140px;
+  height: 56px;
+  object-fit: contain;
+  opacity: 0.65;
+  transition: opacity 0.25s ease;
+  /* Placeholder tint so empty slots are visible during development */
+  background-color: hsl(var(--color-surface));
+  border-radius: 4px;
+}
+
+.partner-logo-img:hover {
+  opacity: 1;
+}
+
+/* Mobile: tighten to 2-column grid on very small screens */
+@media (max-width: 480px) {
+  .partner-logos-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .partner-logo-slot {
+    justify-content: center;
+  }
+}
+
