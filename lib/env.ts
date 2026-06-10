@@ -9,17 +9,31 @@ const envSchema = z.object({
 });
 
 const parseEnv = () => {
+  const isBuildPhase =
+    process.env.NEXT_PHASE === 'phase-production-build' ||
+    !!process.env.CI ||
+    !!process.env.VERCEL;
+
   const result = envSchema.safeParse({
-    DATABASE_URL: process.env.DATABASE_URL,
-    RESEND_API_KEY: process.env.RESEND_API_KEY,
-    RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL,
-    ADMIN_SECRET: process.env.ADMIN_SECRET,
-    TO_EMAIL: process.env.TO_EMAIL,
+    DATABASE_URL: process.env.DATABASE_URL || (isBuildPhase ? 'postgres://localhost/placeholder' : undefined),
+    RESEND_API_KEY: process.env.RESEND_API_KEY || (isBuildPhase ? 'placeholder' : undefined),
+    RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL || (isBuildPhase ? 'placeholder@example.com' : undefined),
+    ADMIN_SECRET: process.env.ADMIN_SECRET || (isBuildPhase ? 'placeholder' : undefined),
+    TO_EMAIL: process.env.TO_EMAIL || (isBuildPhase ? 'placeholder@example.com' : undefined),
   });
 
   if (!result.success) {
     const errorDetails = JSON.stringify(result.error.format(), null, 2);
     console.error('❌ Invalid environment variables:\n', errorDetails);
+    if (isBuildPhase) {
+      return {
+        DATABASE_URL: 'postgres://localhost/placeholder',
+        RESEND_API_KEY: 'placeholder',
+        RESEND_FROM_EMAIL: 'placeholder@example.com',
+        ADMIN_SECRET: 'placeholder',
+        TO_EMAIL: 'placeholder@example.com',
+      };
+    }
     throw new Error(`Invalid environment variables: ${errorDetails}`);
   }
 
