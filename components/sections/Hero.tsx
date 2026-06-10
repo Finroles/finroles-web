@@ -41,10 +41,9 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-mesh px-6 overflow-hidden">
-      {/* Visual Ambient Light Effect */}
-      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-primary/10 blur-[150px] pointer-events-none" />
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-bg px-6 overflow-hidden pt-20">
+      {/* Placeholder for floating navbar */}
+      <nav id="main-nav" className="absolute top-0 left-0 w-full h-0 pointer-events-none" />
 
       <div className="max-w-4xl mx-auto text-center z-10 relative">
         <motion.div
@@ -53,12 +52,12 @@ export function Hero() {
           animate="visible"
           className="flex flex-col items-center gap-6"
         >
-          {/* Badge */}
+          {/* Tagline */}
           <motion.div
             variants={itemVariants}
             className="px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 backdrop-blur-md text-xs font-semibold uppercase tracking-widest text-accent"
           >
-            Elite Financial Talent Partners
+            Finroles &bull; Recruitment and Upskilling
           </motion.div>
 
           {/* Heading */}
@@ -66,22 +65,14 @@ export function Hero() {
             variants={itemVariants}
             className="text-4xl sm:text-6xl md:text-7xl font-bold font-display leading-[1.1] text-text"
           >
-            Sourcing Elite Talent <br />
+            Connecting the world&apos;s best companies with the{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
-              For Global Finance
+              brightest finance professionals
             </span>
           </motion.h1>
 
-          {/* Subheading */}
-          <motion.p
-            variants={itemVariants}
-            className="text-lg sm:text-xl text-muted max-w-2xl font-light leading-relaxed"
-          >
-            Bespoke executive search and specialist talent placement for Investment Banking, Private Equity, Hedge Funds, and Asset Management.
-          </motion.p>
-
           {/* CTA Button */}
-          <motion.div variants={itemVariants} className="mt-4">
+          <motion.div variants={itemVariants} className="mt-6">
             <Button
               size="lg"
               onClick={handleScrollToContact}

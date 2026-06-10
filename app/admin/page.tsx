@@ -57,7 +57,7 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
 
   return (
     <div className="min-h-screen bg-bg pt-28 pb-16 px-6 relative overflow-hidden">
-      <div className="absolute top-0 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/3 blur-[140px] pointer-events-none" />
+
 
       <div className="max-w-7xl mx-auto z-10 relative">
         <div className="flex flex-col gap-8">

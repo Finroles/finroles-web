@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/toast/use-toast';
+import { Phone, Mail, User } from 'lucide-react';
 
 const contentVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -71,33 +72,73 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-30 px-6 bg-bg relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/3 blur-[160px] pointer-events-none" />
-
-      <div className="max-w-4xl mx-auto z-10 relative">
+    <section id="contact" className="pt-30 pb-12 px-6 bg-bg relative overflow-hidden flex flex-col justify-between min-h-[90vh]">
+      <div className="max-w-7xl mx-auto w-full z-10 relative flex-grow">
         <motion.div
           variants={contentVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="flex flex-col gap-12"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-16"
         >
-          {/* Section Heading */}
-          <div className="flex flex-col gap-4 text-center max-w-2xl mx-auto">
-            <span className="text-xs font-semibold tracking-widest text-accent uppercase">
-              Contact
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
-              Partner With Our Search Desk
-            </h2>
-            <p className="text-sm sm:text-base text-muted font-light leading-relaxed">
-              Connect with our search consultants to submit a hiring mandate or enquire about candidate placements.
-            </p>
+          {/* Left Column: Heading and Co-founder Contacts */}
+          <div className="lg:col-span-5 flex flex-col justify-between gap-10">
+            <div className="flex flex-col gap-6">
+              <span className="text-xs font-semibold tracking-widest text-accent uppercase font-mono">
+                Get In Touch
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
+                Partner With Our Search Desk
+              </h2>
+              <p className="text-sm sm:text-base text-muted font-light leading-relaxed">
+                Connect with our search consultants to submit a hiring mandate or enquire about candidate placements.
+              </p>
+            </div>
+
+            {/* Co-founder Contact details */}
+            <div className="flex flex-col gap-6 border-t border-muted/10 pt-8 mt-4">
+              <h3 className="text-sm font-mono text-muted uppercase tracking-wider font-semibold">
+                Co-Founders & Leadership
+              </h3>
+
+              <div className="grid grid-cols-1 gap-6">
+                {/* Co-founder 1 */}
+                <div className="flex flex-col gap-2 p-4 rounded-xl bg-surface border border-muted/5">
+                  <div className="flex items-center gap-2 text-text font-bold font-display">
+                    <User className="w-4 h-4 text-accent" />
+                    <span>CA Piyush Bathwal</span>
+                  </div>
+                  <div className="flex flex-col gap-1 pl-6 text-sm text-muted font-mono">
+                    <a href="tel:+919051902574" className="hover:text-accent flex items-center gap-1.5 transition-colors">
+                      <Phone className="w-3.5 h-3.5" /> +91-90519-02574
+                    </a>
+                    <a href="mailto:piyush@finroles.com" className="hover:text-accent flex items-center gap-1.5 transition-colors">
+                      <Mail className="w-3.5 h-3.5" /> piyush@finroles.com
+                    </a>
+                  </div>
+                </div>
+
+                {/* Co-founder 2 */}
+                <div className="flex flex-col gap-2 p-4 rounded-xl bg-surface border border-muted/5">
+                  <div className="flex items-center gap-2 text-text font-bold font-display">
+                    <User className="w-4 h-4 text-accent" />
+                    <span>CA Ishant Goel</span>
+                  </div>
+                  <div className="flex flex-col gap-1 pl-6 text-sm text-muted font-mono">
+                    <a href="tel:+919999264535" className="hover:text-accent flex items-center gap-1.5 transition-colors">
+                      <Phone className="w-3.5 h-3.5" /> +91-99992-64535
+                    </a>
+                    <a href="mailto:ishant@finroles.com" className="hover:text-accent flex items-center gap-1.5 transition-colors">
+                      <Mail className="w-3.5 h-3.5" /> ishant@finroles.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Form Card */}
-          <div className="bg-surface border border-muted/10 rounded-2xl p-6 sm:p-10 shadow-2xl relative">
+          {/* Right Column: Form Card */}
+          <div className="lg:col-span-7 bg-surface border border-muted/10 rounded-2xl p-6 sm:p-10 shadow-2xl relative h-fit">
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
               {/* Name */}
               <div className="flex flex-col gap-2">
@@ -177,6 +218,12 @@ export function Contact() {
             </form>
           </div>
         </motion.div>
+      </div>
+
+      {/* Footer copyright and wordmark */}
+      <div className="max-w-7xl mx-auto w-full z-10 relative border-t border-muted/10 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-muted/60">
+        <span className="text-lg font-bold text-text font-display">Finroles</span>
+        <span>&copy; {new Date().getFullYear()} Finroles. All rights reserved.</span>
       </div>
     </section>
   );

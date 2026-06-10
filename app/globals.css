@@ -5,8 +5,8 @@
 @layer base {
   :root {
     /* Rich Obsidian/Dark Theme as the core design palette */
-    --color-bg: 224 25% 6%;
-    --color-surface: 224 20% 10%;
+    --color-bg: 0 0% 0%;
+    --color-surface: 0 0% 7%;
     --color-text: 210 20% 98%;
     --color-muted: 217 15% 65%;
     --color-primary: 215 100% 60%;
@@ -33,7 +33,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display), Georgia, serif;
+    font-family: var(--font-display), sans-serif;
   }
 }
 
@@ -71,4 +71,77 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--color-muted) / 0.5);
+}
+
+/* Floating centered pill-shaped navbar custom variables and transition styles */
+:root {
+  --nav-padding-y: 0.875rem;
+  --nav-padding-x: 1.5rem;
+  --nav-max-width: 900px;
+  --nav-font-size: 0.875rem;
+  --nav-border-radius: 9999px;
+  --nav-top: 1.5rem;
+}
+
+.floating-nav {
+  position: fixed;
+  top: var(--nav-top);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: var(--nav-max-width);
+  padding: var(--nav-padding-y) var(--nav-padding-x);
+  border-radius: var(--nav-border-radius);
+  font-size: var(--nav-font-size);
+  z-index: 50;
+  
+  /* Frosted Glass */
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  transition: 
+    max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    padding 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    font-size 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Scrolled/Compressed state overrides */
+.floating-nav.scrolled {
+  --nav-padding-y: 0.55rem;
+  --nav-padding-x: 1.25rem;
+  --nav-max-width: 620px;
+  --nav-font-size: 0.8125rem;
+  --nav-top: 1rem;
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(10, 10, 10, 0.85);
+}
+
+/* Secondary Navigation Links animation (smooth compression with opacity & width collapse) */
+.nav-link-secondary {
+  opacity: 1;
+  max-width: 120px;
+  overflow: hidden;
+  display: inline-flex;
+  white-space: nowrap;
+  transition: 
+    opacity 0.35s ease, 
+    max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-nav.scrolled .nav-link-secondary {
+  opacity: 0;
+  max-width: 0px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  pointer-events: none;
 }

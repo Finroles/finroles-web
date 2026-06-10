@@ -1,48 +1,63 @@
 'use client';
 
-import React from 'react';
-import { motion, type Variants } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView, type Variants } from 'framer-motion';
 
-interface Project {
-  title: string;
-  category: string;
-  description: string;
-  metrics: string;
-  link: string;
+interface CaseStudy {
+  industry: string;
+  city: string;
+  challenge: string;
+  impact: string;
 }
 
-const projectsData: Project[] = [
+const cases: CaseStudy[] = [
   {
-    title: 'Private Equity Fund Scale-Up',
-    category: 'Private Equity',
-    description:
-      'Recruited a comprehensive cohort of 5 investment associates and 1 senior VP for a premier renewable infrastructure buy-side fund.',
-    metrics: '100% Candidate Retention Rate',
-    link: '#',
+    industry: 'Fintech Startup',
+    city: 'Bangalore',
+    challenge: 'Expanding wealth arm',
+    impact: 'Sourced 2 senior Investment Advisors in 15 days.',
   },
   {
-    title: 'Systematic Trading Team Placement',
-    category: 'Quantitative Trading',
-    description:
-      'Managed a discrete lift-out of a 3-person algorithmic trading desk from a tier-1 bank to a multi-strategy hedge fund.',
-    metrics: '8 Weeks Placement Lifecycle',
-    link: '#',
+    industry: 'Manufacturing Co.',
+    city: 'Gurgaon',
+    challenge: 'Needed Finance Manager (Accounts)',
+    impact: 'Sourced Senior Accountant in 10 days.',
   },
   {
-    title: 'Boutique M&A Advisory Build-Out',
-    category: 'Investment Banking',
-    description:
-      'Sourced 4 senior TMT coverage bankers to establish and expand a newly launched boutique mergers & acquisitions desk.',
-    metrics: '4 Key Directors Placed',
-    link: '#',
+    industry: 'Digital Marketing Co.',
+    city: 'Delhi',
+    challenge: 'Needed Assistant Manager Finance',
+    impact: 'Sourced beyond JD requirements in 21 days.',
   },
   {
-    title: 'Macro Fund Chief Risk Officer',
-    category: 'Risk Management',
-    description:
-      'Successfully placed the Chief Risk Officer (CRO) for a $2.5B global macro fund utilizing bespoke search protocols.',
-    metrics: '45-Day Retained Search Cycle',
-    link: '#',
+    industry: 'Asset Management Co.',
+    city: 'Mumbai',
+    challenge: 'Needed Senior Wealth Manager',
+    impact: 'Sourced 4 candidates (~14 yrs exp) in 14 days.',
+  },
+  {
+    industry: 'Investment Banking',
+    city: 'Noida',
+    challenge: 'PAN India team expansion',
+    impact: 'Sourced 2 senior leaders in 45 days.',
+  },
+  {
+    industry: 'Cleantech Company',
+    city: 'Bangalore',
+    challenge: 'Needed Business Finance Manager',
+    impact: 'Sourced in 30 days.',
+  },
+  {
+    industry: 'Venture Fund',
+    city: 'Mumbai',
+    challenge: 'Needed Associate & Finance Manager',
+    impact: 'Sourced both beyond JD in 45 days.',
+  },
+  {
+    industry: 'Fintech',
+    city: 'Mumbai',
+    challenge: 'Needed Senior Accounts Payable Manager',
+    impact: 'Sourced (~7 yrs exp) in 30 days.',
   },
 ];
 
@@ -50,117 +65,73 @@ const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.08,
     },
   },
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      duration: 0.6,
+      ease: 'easeOut',
     },
   },
 };
 
 export function Work() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+
   return (
     <section id="work" className="py-30 px-6 bg-bg relative overflow-hidden">
-      <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-accent/3 blur-[140px] pointer-events-none" />
-
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
-          <div className="flex flex-col gap-4">
-            <span className="text-xs font-semibold tracking-widest text-accent uppercase">
-              Placements
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
-              Elite Placement Success Stories
-            </h2>
-          </div>
-          <div className="w-16 h-1 bg-accent rounded-full hidden md:block mb-4" />
+        <div className="flex flex-col gap-4 text-center max-w-2xl mx-auto mb-20">
+          <span className="text-xs font-semibold tracking-widest text-accent uppercase font-mono">
+            Success Stories
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
+            Recent Success
+          </h2>
+          <div className="w-12 h-1 bg-accent mx-auto mt-2 rounded-full" />
         </div>
 
         <motion.div
+          ref={ref}
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {projectsData.map((project, index) => (
+          {cases.map((cs, index) => (
             <motion.div
-              key={project.title}
+              key={index}
               variants={cardVariants}
-              className="group relative rounded-2xl bg-surface border border-muted/10 overflow-hidden aspect-[16/10] flex flex-col justify-between p-8 shadow-2xl transition-all duration-500 hover:border-accent/40 hover:shadow-accent/5"
+              className="flex flex-col justify-between p-6 rounded-2xl bg-surface border border-muted/5 hover:border-accent/20 transition-all duration-300 relative group"
             >
-              {/* Dark Geometric Dot Mesh CSS Backdrop representing visual grid */}
-              <div
-                className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  backgroundImage: `radial-gradient(circle, hsl(var(--color-text)) 1px, transparent 1px)`,
-                  backgroundSize: '16px 16px',
-                }}
-              />
-
-              {/* Glowing Ambient light background behind card content */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-accent/0 group-hover:bg-accent/5 blur-2xl transition-all duration-700 pointer-events-none" />
-
-              {/* Hover Overlay Effect - Warm Bronze gradient overlay reveal */}
-              <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/95 to-bg/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
-
-              {/* Card Header (Category and Index) */}
-              <div className="flex items-center justify-between z-10 relative">
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-bg border border-muted/10 text-muted group-hover:text-accent group-hover:border-accent/20 transition-colors duration-300">
-                  {project.category}
+              {/* Header */}
+              <div className="flex flex-col gap-1 mb-6">
+                <span className="text-xs font-mono text-accent uppercase tracking-wider font-semibold">
+                  {cs.industry}
                 </span>
-                <span className="text-xs font-mono text-muted/40 font-light">
-                  0{index + 1}
+                <span className="text-[11px] font-mono text-muted/65">
+                  {cs.city}
                 </span>
               </div>
 
-              {/* Card Body & Interactive Shift */}
-              <div className="z-10 relative flex flex-col gap-4 mt-12">
-                <h3 className="text-2xl font-bold font-display text-text group-hover:text-accent transition-colors duration-300">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-muted leading-relaxed font-light line-clamp-3">
-                  {project.description}
-                </p>
-              </div>
-
-              {/* Card Footer containing statistics, revealed link */}
-              <div className="z-10 relative flex items-center justify-between border-t border-muted/10 pt-6 mt-8">
+              {/* Challenge & Impact */}
+              <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase font-mono text-muted/60 tracking-wider">
-                    Key Performance
-                  </span>
-                  <span className="text-sm font-semibold text-text font-display">
-                    {project.metrics}
-                  </span>
+                  <span className="text-[10px] uppercase font-mono text-muted/50 tracking-wider">Challenge</span>
+                  <p className="text-sm text-text font-medium leading-relaxed mt-0.5">{cs.challenge}</p>
                 </div>
-                <span className="text-sm font-medium text-accent flex items-center gap-1 group-hover:translate-x-1.5 transition-transform duration-300">
-                  View Case
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-4 w-4"
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </span>
+                <div className="flex flex-col border-t border-muted/5 pt-3">
+                  <span className="text-[10px] uppercase font-mono text-muted/50 tracking-wider">Impact</span>
+                  <p className="text-sm text-accent font-semibold leading-relaxed mt-0.5">{cs.impact}</p>
+                </div>
               </div>
             </motion.div>
           ))}

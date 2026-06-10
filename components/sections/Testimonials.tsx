@@ -54,7 +54,7 @@ const cardVariants: Variants = {
 export function Testimonials() {
   return (
     <section id="testimonials" className="py-30 px-6 bg-surface/50 border-t border-muted/5 relative overflow-hidden">
-      <div className="absolute bottom-0 right-1/4 w-[350px] h-[350px] rounded-full bg-accent/3 blur-[120px] pointer-events-none" />
+
 
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-4 text-center max-w-2xl mx-auto mb-20">

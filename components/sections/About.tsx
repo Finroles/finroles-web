@@ -25,15 +25,22 @@ const childVariants: Variants = {
   },
 };
 
-interface StatItem {
-  value: string;
-  label: string;
-}
-
-const stats: StatItem[] = [
-  { value: '500+', label: 'Elite Finance Placements' },
-  { value: '15 Days', label: 'Average Time-to-Submit' },
-  { value: '98%', label: 'Candidate Retention Rate' },
+const aboutPoints = [
+  {
+    num: '01',
+    title: 'Platform Unification',
+    text: 'A recruitment partner bringing top companies and finance professionals together on one platform.',
+  },
+  {
+    num: '02',
+    title: 'Deep Sourcing Access',
+    text: 'Deep access to finance professionals enables quick, accurate candidate sourcing within tight timelines.',
+  },
+  {
+    num: '03',
+    title: 'Startup Drive',
+    text: "A new, hungry startup — not India's largest agency, but committed to going the extra mile and leaving their mark.",
+  },
 ];
 
 export function About() {
@@ -42,143 +49,43 @@ export function About() {
 
   return (
     <section id="about" className="py-30 px-6 bg-bg relative overflow-hidden">
-      {/* Decorative Blur */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
-
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={sectionRef}
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start"
         >
-          {/* Left Column: Text */}
-          <div className="flex flex-col gap-6">
+          {/* Left Column: Heading */}
+          <div className="lg:col-span-5 flex flex-col gap-6 sticky top-28">
             <motion.div variants={childVariants} className="flex flex-col gap-2">
-              <span className="text-xs font-semibold tracking-widest text-accent uppercase">
-                Our Expertise
+              <span className="text-xs font-semibold tracking-widest text-accent uppercase font-mono">
+                About Finroles
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
-                Connecting Elite Minds With Global Finance Leaders
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text leading-tight">
+                Our Mission & Commitment
               </h2>
             </motion.div>
-
-            <motion.p
-              variants={childVariants}
-              className="text-muted leading-relaxed font-light text-base sm:text-lg"
-            >
-              Finroles is a premier executive search and recruitment firm dedicated exclusively to the financial services sector. We partner with investment banks, private equity firms, and quantitative hedge funds to secure high-performance talent.
-            </motion.p>
-
-            <motion.p
-              variants={childVariants}
-              className="text-muted leading-relaxed font-light text-base sm:text-lg"
-            >
-              Our specialists are former finance professionals who speak your language. We understand the high standards of buy-side, sell-side, and quantitative research markets, leveraging proprietary networks to deliver candidates who immediately drive alpha.
-            </motion.p>
+            <motion.div variants={childVariants} className="w-16 h-1 bg-accent rounded-full" />
           </div>
 
-          {/* Right Column: Premium Interactive SVG UI Mockup */}
-          <motion.div
-            variants={childVariants}
-            className="relative bg-surface border border-muted/10 rounded-2xl p-6 shadow-2xl overflow-hidden aspect-[4/3] flex flex-col justify-between"
-          >
-            {/* Header elements */}
-            <div className="flex items-center justify-between border-b border-muted/10 pb-4">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                <span className="text-xs text-muted/60 font-mono ml-2">talent_search_query.sh</span>
-              </div>
-              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent uppercase tracking-wider font-mono">
-                Active
-              </span>
-            </div>
-
-            {/* Simulated Chart Visualization */}
-            <div className="flex-grow flex items-end gap-3 pt-8 pb-4 relative">
-              {/* Grid Background lines */}
-              <div className="absolute inset-x-0 bottom-4 top-8 flex flex-col justify-between pointer-events-none">
-                <div className="border-b border-muted/5 w-full" />
-                <div className="border-b border-muted/5 w-full" />
-                <div className="border-b border-muted/5 w-full" />
-              </div>
-
-              {/* Glowing trendline graph representation */}
-              <svg
-                className="absolute inset-x-0 bottom-4 top-8 w-full h-[calc(100%-2rem)] text-accent overflow-visible"
-                viewBox="0 0 100 50"
-                preserveAspectRatio="none"
+          {/* Right Column: Three points */}
+          <div className="lg:col-span-7 flex flex-col gap-10">
+            {aboutPoints.map((point) => (
+              <motion.div
+                key={point.num}
+                variants={childVariants}
+                className="flex gap-6 items-start p-6 rounded-2xl bg-surface border border-muted/10 shadow-lg"
               >
-                <defs>
-                  <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="hsl(var(--color-accent))" stopOpacity="0.4" />
-                    <stop offset="100%" stopColor="hsl(var(--color-accent))" stopOpacity="0.0" />
-                  </linearGradient>
-                </defs>
-                {/* Area under curve */}
-                <path
-                  d="M 0 50 L 0 35 Q 25 15 50 25 T 100 10 L 100 50 Z"
-                  fill="url(#gradient)"
-                />
-                {/* Smooth curve line */}
-                <path
-                  d="M 0 35 Q 25 15 50 25 T 100 10"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="drop-shadow-[0_0_8px_hsl(var(--color-accent)/0.5)]"
-                />
-                {/* Dots on line */}
-                <circle cx="50" cy="25" r="2.5" fill="currentColor" />
-                <circle cx="100" cy="10" r="2.5" fill="currentColor" />
-              </svg>
-
-              <div className="z-10 bg-bg/80 border border-muted/10 rounded-lg p-3 backdrop-blur-md absolute top-10 right-4 font-mono text-[10px] text-muted flex flex-col gap-1">
-                <span className="text-text font-bold">TALENT POOL</span>
-                <span>PLACED: 98%</span>
-                <span>MATCH RATE: 99%</span>
-              </div>
-            </div>
-
-            {/* Bottom stats mockup */}
-            <div className="flex justify-between items-center bg-bg/40 border border-muted/10 rounded-xl p-4">
-              <div className="flex flex-col">
-                <span className="text-[10px] text-muted uppercase font-mono tracking-wider">Active Searches</span>
-                <span className="text-sm font-semibold text-text font-display">Private Equity & VC</span>
-              </div>
-              <div className="flex flex-col items-end">
-                <span className="text-[10px] text-muted uppercase font-mono tracking-wider">Specialization</span>
-                <span className="text-sm font-semibold text-accent font-display">Buy-Side Focus</span>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Stats Row */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 border-t border-muted/10 pt-16"
-        >
-          {stats.map((stat) => (
-            <motion.div
-              key={stat.label}
-              variants={childVariants}
-              className="flex flex-col items-center md:items-start text-center md:text-left gap-2 p-6 rounded-xl bg-surface border border-muted/5 hover:border-accent/20 transition-colors duration-300"
-            >
-              <span className="text-4xl sm:text-5xl font-bold font-display text-accent">
-                {stat.value}
-              </span>
-              <span className="text-sm font-light text-muted uppercase tracking-widest leading-relaxed">
-                {stat.label}
-              </span>
-            </motion.div>
-          ))}
+                <span className="text-xl font-mono text-accent font-bold mt-1">{point.num}</span>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-lg font-bold font-display text-text">{point.title}</h3>
+                  <p className="text-muted leading-relaxed font-light text-base">{point.text}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
