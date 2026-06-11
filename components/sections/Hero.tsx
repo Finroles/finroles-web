@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
@@ -27,7 +27,45 @@ const itemVariants: Variants = {
   },
 };
 
+const typewriterWords = [
+  'finance professionals',
+  'investment bankers',
+  'chartered accountants',
+  'wealth managers',
+];
+
 export function Hero() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    const fullWord = typewriterWords[wordIndex];
+    const speed = isDeleting ? 30 : 60;
+
+    const handleTick = () => {
+      if (!isDeleting) {
+        setCurrentText(fullWord.substring(0, currentText.length + 1));
+        if (currentText === fullWord) {
+          timer = setTimeout(() => setIsDeleting(true), 2000);
+          return;
+        }
+      } else {
+        setCurrentText(fullWord.substring(0, currentText.length - 1));
+        if (currentText === '') {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % typewriterWords.length);
+          return;
+        }
+      }
+      timer = setTimeout(handleTick, speed);
+    };
+
+    timer = setTimeout(handleTick, speed);
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, wordIndex]);
+
   const handleScrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const contactElement = document.getElementById('contact');
@@ -63,11 +101,14 @@ export function Hero() {
           {/* Heading */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-6xl md:text-7xl font-bold font-display leading-[1.1] text-text"
+            className="text-4xl sm:text-6xl md:text-7xl font-bold font-display leading-[1.1] text-text min-h-[3.3em] sm:min-h-[2.2em]"
           >
             Connecting the world&apos;s best companies with the{' '}
-            <span className="text-text">
-              brightest finance professionals
+            <span className="block sm:inline">
+              brightest{' '}
+              <span className="text-text border-r-[3px] border-text pr-1.5 whitespace-nowrap">
+                {currentText}
+              </span>
             </span>
           </motion.h1>
 
