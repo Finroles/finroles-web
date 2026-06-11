@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
-import { Michroma, DM_Sans } from 'next/font/google';
+import { Bitter, DM_Sans } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Toaster } from '@/components/ui/toast/toaster';
 
 // Fonts setup
-const michroma = Michroma({
+const bitter = Bitter({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['400'],
+  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
 });
 
@@ -51,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${michroma.variable} ${dmSans.variable} scroll-smooth`}
+      className={`${bitter.variable} ${dmSans.variable} scroll-smooth`}
     >
       <body className="font-body text-text bg-bg antialiased">
         <Navbar />

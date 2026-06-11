@@ -78,7 +78,7 @@ export function Navbar() {
         <a
           href="#"
           onClick={(e) => handleScrollTo(e, '#')}
-          className="text-xl sm:text-2xl font-bold font-display text-text hover:text-accent transition-colors"
+          className="text-xl sm:text-2xl font-bold font-display text-text hover:opacity-85 transition-opacity"
         >
           Finroles
         </a>
@@ -91,12 +91,12 @@ export function Navbar() {
               href={link.href}
               onClick={(e) => handleScrollTo(e, link.href)}
               className={cn(
-                'text-sm font-medium text-text/80 hover:text-accent transition-colors relative group',
+                'text-sm font-medium text-text/80 hover:text-text transition-colors relative group',
                 link.isSecondary ? 'nav-link-secondary' : ''
               )}
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-text transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
@@ -106,7 +106,7 @@ export function Navbar() {
           <a
             href="#contact"
             onClick={(e) => handleScrollTo(e, '#contact')}
-            className="px-4 py-1.5 rounded-full bg-accent text-bg text-sm font-semibold hover:opacity-90 transition-all duration-300 shadow-md shadow-accent/10 hover:shadow-accent/25 whitespace-nowrap"
+            className="px-4 py-1.5 rounded-full bg-accent text-bg text-sm font-semibold hover:opacity-90 transition-all duration-300 shadow-md shadow-text/5 whitespace-nowrap"
           >
             Get in Touch
           </a>
@@ -115,7 +115,7 @@ export function Navbar() {
         {/* Mobile Hamburger Trigger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-text hover:text-accent transition-colors p-2"
+          className="md:hidden text-text hover:opacity-80 transition-opacity p-2"
           aria-label="Toggle navigation menu"
         >
           {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -149,7 +149,7 @@ export function Navbar() {
                     key={link.label}
                     href={link.href}
                     onClick={(e) => handleScrollTo(e, link.href)}
-                    className="text-lg font-medium text-text/80 hover:text-accent transition-colors border-b border-muted/5 pb-2"
+                    className="text-lg font-medium text-text/80 hover:text-text transition-colors border-b border-muted/5 pb-2"
                   >
                     {link.label}
                   </a>

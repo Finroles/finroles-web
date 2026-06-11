@@ -47,13 +47,13 @@ export function Problem() {
         >
           {/* Section Header */}
           <div className="flex flex-col gap-4 text-center max-w-3xl mx-auto">
-            <span className="text-xs font-semibold tracking-widest text-accent uppercase font-mono">
+            <span className="text-xs font-semibold tracking-widest text-text uppercase">
               The Hiring Tension
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
               The Two-Sided Market Failure
             </h2>
-            <div className="w-12 h-1 bg-accent mx-auto mt-2 rounded-full" />
+            <div className="w-12 h-1 bg-text mx-auto mt-2 rounded-full" />
           </div>
 
           {/* Two Columns Grid */}
@@ -63,7 +63,7 @@ export function Problem() {
               variants={childVariants}
               className="p-8 rounded-2xl bg-surface border border-muted/10 flex flex-col gap-6"
             >
-              <h3 className="text-2xl font-bold font-display text-accent border-b border-muted/10 pb-4">
+              <h3 className="text-2xl font-bold font-display text-text border-b border-muted/10 pb-4">
                 Finding the Right Fit
               </h3>
               <p className="text-muted leading-relaxed font-light text-base">
@@ -76,7 +76,7 @@ export function Problem() {
               variants={childVariants}
               className="p-8 rounded-2xl bg-surface border border-muted/10 flex flex-col gap-6"
             >
-              <h3 className="text-2xl font-bold font-display text-primary border-b border-muted/10 pb-4">
+              <h3 className="text-2xl font-bold font-display text-text border-b border-muted/10 pb-4">
                 Providing the Right Job
               </h3>
               <p className="text-muted leading-relaxed font-light text-base">
@@ -96,7 +96,7 @@ export function Problem() {
                 variants={childVariants}
                 className="flex flex-col items-center text-center gap-2 p-6 rounded-xl bg-surface/50 border border-muted/5"
               >
-                <span className="text-5xl font-bold font-display text-accent">{stat.value}</span>
+                <span className="text-5xl font-bold font-display text-text">{stat.value}</span>
                 <span className="text-sm font-light text-muted uppercase tracking-wider leading-snug">
                   {stat.label}
                 </span>

@@ -84,7 +84,7 @@ export function Contact() {
           {/* Left Column: Heading and Co-founder Contacts */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-10">
             <div className="flex flex-col gap-6">
-              <span className="text-xs font-semibold tracking-widest text-accent uppercase font-mono">
+              <span className="text-xs font-semibold tracking-widest text-text uppercase">
                 Get In Touch
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
@@ -105,14 +105,14 @@ export function Contact() {
                 {/* Co-founder 1 */}
                 <div className="flex flex-col gap-2 p-4 rounded-xl bg-surface border border-muted/5">
                   <div className="flex items-center gap-2 text-text font-bold font-display">
-                    <User className="w-4 h-4 text-accent" />
+                    <User className="w-4 h-4 text-text" />
                     <span>CA Piyush Bathwal</span>
                   </div>
                   <div className="flex flex-col gap-1 pl-6 text-sm text-muted font-mono">
-                    <a href="tel:+919051902574" className="hover:text-accent flex items-center gap-1.5 transition-colors">
+                    <a href="tel:+919051902574" className="hover:text-text flex items-center gap-1.5 transition-colors">
                       <Phone className="w-3.5 h-3.5" /> +91-90519-02574
                     </a>
-                    <a href="mailto:piyush@finroles.com" className="hover:text-accent flex items-center gap-1.5 transition-colors">
+                    <a href="mailto:piyush@finroles.com" className="hover:text-text flex items-center gap-1.5 transition-colors">
                       <Mail className="w-3.5 h-3.5" /> piyush@finroles.com
                     </a>
                   </div>
@@ -121,14 +121,14 @@ export function Contact() {
                 {/* Co-founder 2 */}
                 <div className="flex flex-col gap-2 p-4 rounded-xl bg-surface border border-muted/5">
                   <div className="flex items-center gap-2 text-text font-bold font-display">
-                    <User className="w-4 h-4 text-accent" />
+                    <User className="w-4 h-4 text-text" />
                     <span>CA Ishant Goel</span>
                   </div>
                   <div className="flex flex-col gap-1 pl-6 text-sm text-muted font-mono">
-                    <a href="tel:+919999264535" className="hover:text-accent flex items-center gap-1.5 transition-colors">
+                    <a href="tel:+919999264535" className="hover:text-text flex items-center gap-1.5 transition-colors">
                       <Phone className="w-3.5 h-3.5" /> +91-99992-64535
                     </a>
-                    <a href="mailto:ishant@finroles.com" className="hover:text-accent flex items-center gap-1.5 transition-colors">
+                    <a href="mailto:ishant@finroles.com" className="hover:text-text flex items-center gap-1.5 transition-colors">
                       <Mail className="w-3.5 h-3.5" /> ishant@finroles.com
                     </a>
                   </div>

@@ -15,7 +15,7 @@ export function PartnerLogos() {
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-10">
 
         {/* Section label — identical class string used across all other sections */}
-        <span className="text-xs font-semibold tracking-widest text-accent uppercase font-mono">
+        <span className="text-xs font-semibold tracking-widest text-text uppercase">
           Companies We&apos;ve Worked With
         </span>
 

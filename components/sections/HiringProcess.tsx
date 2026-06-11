@@ -64,13 +64,13 @@ export function HiringProcess() {
         >
           {/* Section Header */}
           <div className="flex flex-col gap-4 text-center max-w-3xl mx-auto">
-            <span className="text-xs font-semibold tracking-widest text-accent uppercase font-mono">
+            <span className="text-xs font-semibold tracking-widest text-text uppercase">
               The Journey
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
               Our Hiring Process
             </h2>
-            <div className="w-12 h-1 bg-accent mx-auto mt-2 rounded-full" />
+            <div className="w-12 h-1 bg-text mx-auto mt-2 rounded-full" />
           </div>
 
           {/* Timeline Wrapper */}
@@ -85,7 +85,7 @@ export function HiringProcess() {
                 className="flex-1 flex flex-col items-center md:items-start text-center md:text-left gap-4 relative z-10"
               >
                 {/* Step circle */}
-                <div className="w-12 h-12 rounded-full bg-accent text-bg flex items-center justify-center font-mono font-bold text-lg shadow-lg shadow-accent/10 border-4 border-bg">
+                <div className="w-12 h-12 rounded-full bg-accent text-bg flex items-center justify-center font-mono font-bold text-lg shadow-lg shadow-text/5 border-4 border-bg">
                   {step.num}
                 </div>
 

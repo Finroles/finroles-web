@@ -90,13 +90,13 @@ export function Work() {
     <section id="work" className="py-30 px-6 bg-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-4 text-center max-w-2xl mx-auto mb-20">
-          <span className="text-xs font-semibold tracking-widest text-accent uppercase font-mono">
+          <span className="text-xs font-semibold tracking-widest text-text uppercase">
             Success Stories
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
             Recent Success
           </h2>
-          <div className="w-12 h-1 bg-accent mx-auto mt-2 rounded-full" />
+          <div className="w-12 h-1 bg-text mx-auto mt-2 rounded-full" />
         </div>
 
         <motion.div
@@ -110,11 +110,11 @@ export function Work() {
             <motion.div
               key={index}
               variants={cardVariants}
-              className="flex flex-col justify-between p-6 rounded-2xl bg-surface border border-muted/5 hover:border-accent/20 transition-all duration-300 relative group"
+              className="flex flex-col justify-between p-6 rounded-2xl bg-surface border border-muted/5 hover:border-text/20 transition-all duration-300 relative group"
             >
               {/* Header */}
               <div className="flex flex-col gap-1 mb-6">
-                <span className="text-xs font-mono text-accent uppercase tracking-wider font-semibold">
+                <span className="text-xs font-mono text-text uppercase tracking-wider font-semibold">
                   {cs.industry}
                 </span>
                 <span className="text-[11px] font-mono text-muted/65">
@@ -130,7 +130,7 @@ export function Work() {
                 </div>
                 <div className="flex flex-col border-t border-muted/5 pt-3">
                   <span className="text-[10px] uppercase font-mono text-muted/50 tracking-wider">Impact</span>
-                  <p className="text-sm text-accent font-semibold leading-relaxed mt-0.5">{cs.impact}</p>
+                  <p className="text-sm text-text font-semibold leading-relaxed mt-0.5">{cs.impact}</p>
                 </div>
               </div>
             </motion.div>

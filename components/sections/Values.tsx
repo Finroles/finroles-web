@@ -42,13 +42,13 @@ export function Values() {
         >
           {/* Section Header */}
           <div className="flex flex-col gap-4 text-center max-w-3xl mx-auto">
-            <span className="text-xs font-semibold tracking-widest text-accent uppercase font-mono">
+            <span className="text-xs font-semibold tracking-widest text-text uppercase">
               Core Principles
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
               Our Values
             </h2>
-            <div className="w-12 h-1 bg-accent mx-auto mt-2 rounded-full" />
+            <div className="w-12 h-1 bg-text mx-auto mt-2 rounded-full" />
           </div>
 
           {/* Values Cards */}
@@ -56,10 +56,10 @@ export function Values() {
             {/* Card 1: Transparency & Integrity */}
             <motion.div
               variants={childVariants}
-              className="flex flex-col gap-6 p-8 rounded-2xl bg-surface border border-muted/10 hover:border-accent/30 transition-all duration-300 shadow-xl"
+              className="flex flex-col gap-6 p-8 rounded-2xl bg-surface border border-muted/10 hover:border-text/30 transition-all duration-300 shadow-xl"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/5 flex items-center justify-center border border-accent/15">
-                <ShieldCheck className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-xl bg-text/5 flex items-center justify-center border border-text/15">
+                <ShieldCheck className="w-6 h-6 text-text" />
               </div>
               <div className="flex flex-col gap-3">
                 <h3 className="text-xl font-bold font-display text-text">Transparency & Integrity</h3>
@@ -72,10 +72,10 @@ export function Values() {
             {/* Card 2: Regulations and Trends */}
             <motion.div
               variants={childVariants}
-              className="flex flex-col gap-6 p-8 rounded-2xl bg-surface border border-muted/10 hover:border-accent/30 transition-all duration-300 shadow-xl"
+              className="flex flex-col gap-6 p-8 rounded-2xl bg-surface border border-muted/10 hover:border-text/30 transition-all duration-300 shadow-xl"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/5 flex items-center justify-center border border-accent/15">
-                <TrendingUp className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-xl bg-text/5 flex items-center justify-center border border-text/15">
+                <TrendingUp className="w-6 h-6 text-text" />
               </div>
               <div className="flex flex-col gap-3">
                 <h3 className="text-xl font-bold font-display text-text">Regulations and Trends</h3>
@@ -88,10 +88,10 @@ export function Values() {
             {/* Card 3: Business Alignment */}
             <motion.div
               variants={childVariants}
-              className="flex flex-col gap-6 p-8 rounded-2xl bg-surface border border-muted/10 hover:border-accent/30 transition-all duration-300 shadow-xl"
+              className="flex flex-col gap-6 p-8 rounded-2xl bg-surface border border-muted/10 hover:border-text/30 transition-all duration-300 shadow-xl"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/5 flex items-center justify-center border border-accent/15">
-                <Landmark className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-xl bg-text/5 flex items-center justify-center border border-text/15">
+                <Landmark className="w-6 h-6 text-text" />
               </div>
               <div className="flex flex-col gap-3">
                 <h3 className="text-xl font-bold font-display text-text">Business Alignment</h3>

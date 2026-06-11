@@ -55,7 +55,7 @@ export function Hero() {
           {/* Tagline */}
           <motion.div
             variants={itemVariants}
-            className="px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 backdrop-blur-md text-xs font-semibold uppercase tracking-widest text-accent"
+            className="px-4 py-1.5 rounded-full border border-muted/20 bg-surface backdrop-blur-md text-xs font-semibold uppercase tracking-widest text-text"
           >
             Finroles &bull; Recruitment and Upskilling
           </motion.div>
@@ -66,7 +66,7 @@ export function Hero() {
             className="text-4xl sm:text-6xl md:text-7xl font-bold font-display leading-[1.1] text-text"
           >
             Connecting the world&apos;s best companies with the{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
+            <span className="text-text">
               brightest finance professionals
             </span>
           </motion.h1>
@@ -76,7 +76,7 @@ export function Hero() {
             <Button
               size="lg"
               onClick={handleScrollToContact}
-              className="group gap-2 border border-accent/30"
+              className="group gap-2 border border-text/30"
             >
               Partner With Us
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -98,7 +98,7 @@ export function Hero() {
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="w-1.5 h-2.5 rounded-full bg-accent absolute top-0"
+            className="w-1.5 h-2.5 rounded-full bg-text absolute top-0"
           />
         </div>
       </div>

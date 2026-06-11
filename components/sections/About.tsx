@@ -60,14 +60,14 @@ export function About() {
           {/* Left Column: Heading */}
           <div className="lg:col-span-5 flex flex-col gap-6 sticky top-28">
             <motion.div variants={childVariants} className="flex flex-col gap-2">
-              <span className="text-xs font-semibold tracking-widest text-accent uppercase font-mono">
+              <span className="text-xs font-semibold tracking-widest text-text uppercase">
                 About Finroles
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text leading-tight">
                 Our Mission & Commitment
               </h2>
             </motion.div>
-            <motion.div variants={childVariants} className="w-16 h-1 bg-accent rounded-full" />
+            <motion.div variants={childVariants} className="w-16 h-1 bg-text rounded-full" />
           </div>
 
           {/* Right Column: Three points */}
@@ -78,7 +78,7 @@ export function About() {
                 variants={childVariants}
                 className="flex gap-6 items-start p-6 rounded-2xl bg-surface border border-muted/10 shadow-lg"
               >
-                <span className="text-xl font-mono text-accent font-bold mt-1">{point.num}</span>
+                <span className="text-xl font-mono text-text font-bold mt-1">{point.num}</span>
                 <div className="flex flex-col gap-2">
                   <h3 className="text-lg font-bold font-display text-text">{point.title}</h3>
                   <p className="text-muted leading-relaxed font-light text-base">{point.text}</p>

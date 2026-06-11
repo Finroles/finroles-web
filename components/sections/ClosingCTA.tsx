@@ -46,7 +46,7 @@ export function ClosingCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Button size="lg" onClick={handleScrollToContact} className="px-8 border border-accent/20">
+          <Button size="lg" onClick={handleScrollToContact} className="px-8 border border-text/20">
             Get in Touch
           </Button>
         </motion.div>

@@ -58,13 +58,13 @@ export function Testimonials() {
 
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-4 text-center max-w-2xl mx-auto mb-20">
-          <span className="text-xs font-semibold tracking-widest text-accent uppercase">
+          <span className="text-xs font-semibold tracking-widest text-text uppercase">
             Testimonials
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-text">
             Trusted by Leaders in Finance & Tech
           </h2>
-          <div className="w-12 h-1 bg-accent mx-auto mt-2 rounded-full" />
+          <div className="w-12 h-1 bg-text mx-auto mt-2 rounded-full" />
         </div>
 
         <motion.div
@@ -78,10 +78,10 @@ export function Testimonials() {
             <motion.div
               key={testimonial.name}
               variants={cardVariants}
-              className="flex flex-col justify-between p-8 rounded-2xl bg-surface border border-muted/5 shadow-xl hover:border-accent/20 transition-all duration-300 relative"
+              className="flex flex-col justify-between p-8 rounded-2xl bg-surface border border-muted/5 shadow-xl hover:border-text/20 transition-all duration-300 relative"
             >
               {/* Decorative Quotes Icon */}
-              <span className="absolute top-6 left-6 text-accent/5 font-serif text-[120px] leading-none select-none pointer-events-none">
+              <span className="absolute top-6 left-6 text-text/5 font-serif text-[120px] leading-none select-none pointer-events-none">
                 &ldquo;
               </span>
 
