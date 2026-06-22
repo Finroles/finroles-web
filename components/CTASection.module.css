@@ -1,0 +1,114 @@
+.ctaSection {
+  position: relative;
+  background-color: var(--color-bg);
+  padding: var(--space-120) var(--space-24);
+  border-top: 1px solid var(--color-accent);
+  overflow: hidden;
+}
+
+.dotGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: shiftDotGrid 40s linear infinite;
+}
+
+@keyframes shiftDotGrid {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 24px 24px;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-16);
+  line-height: 1.1;
+}
+
+.subtext {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-40);
+  line-height: 1.6;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.ctaButton {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: var(--space-16) var(--space-48);
+  border: 1px solid var(--color-accent);
+  transition: background-color 200ms ease, border-color 200ms ease;
+  cursor: pointer;
+}
+
+.ctaButton:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+  animation: glowPulseLocal 1.5s infinite;
+}
+
+@keyframes glowPulseLocal {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .ctaSection {
+    padding: var(--space-80) var(--space-16);
+  }
+
+  .heading {
+    font-size: 2.25rem;
+  }
+
+  .ctaButton {
+    width: 100%;
+    padding: var(--space-16) var(--space-32);
+    text-align: center;
+  }
+}

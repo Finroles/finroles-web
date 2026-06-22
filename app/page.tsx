@@ -1,29 +1,25 @@
-import { Hero } from '@/components/sections/Hero';
-import { PartnerLogos } from '@/components/sections/PartnerLogos';
-import { About } from '@/components/sections/About';
-import { Problem } from '@/components/sections/Problem';
-import { Solution } from '@/components/sections/Solution';
-import { Services } from '@/components/sections/Services';
-import { Values } from '@/components/sections/Values';
-import { HiringProcess } from '@/components/sections/HiringProcess';
-import { Work } from '@/components/sections/Work';
-import { ClosingCTA } from '@/components/sections/ClosingCTA';
-import { Contact } from '@/components/sections/Contact';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import Marquee from '@/components/Marquee';
+import Features from '@/components/Features';
+import HowItWorks from '@/components/HowItWorks';
+import Testimonials from '@/components/Testimonials';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <PartnerLogos />
-      <About />
-      <Problem />
-      <Solution />
-      <Services />
-      <Values />
-      <HiringProcess />
-      <Work />
-      <ClosingCTA />
-      <Contact />
+      <Navbar />
+      <main>
+        <Hero />
+        <Marquee />
+        <Features />
+        <HowItWorks />
+        <Testimonials />
+        <CTASection />
+      </main>
+      <Footer />
     </>
   );
 }

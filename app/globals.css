@@ -2,158 +2,135 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    /* Light Theme — white background, solid black text */
-    --color-bg: 0 0% 100%;
-    --color-surface: 0 0% 96%;
-    --color-text: 0 0% 6%;
-    --color-muted: 0 0% 42%;
-    --color-primary: 0 0% 6%;
-    --color-accent: 0 0% 6%;
+:root {
+  /* Strict Color Palette */
+  --color-bg: #000000;
+  --color-bg-card: rgba(255, 255, 255, 0.03);
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-text-primary: #FFFFFF;
+  --color-text-muted: #8A9BB0;
+  --color-accent: #2563EB;
+  --color-accent-glow: rgba(37, 99, 235, 0.15);
 
-    /* Radius Design Tokens */
-    --radius-sm: 0.25rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 0.75rem;
-    --radius-xl: 1rem;
-    --radius-2xl: 1.5rem;
+  /* Spacing Grid (8px grid) */
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+  --space-72: 72px;
+  --space-80: 80px;
+  --space-96: 96px;
+  --space-120: 120px;
+
+  /* Typography */
+  --font-family: var(--font-primary), system-ui, -apple-system, sans-serif;
+}
+
+/* CSS resets & strict styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important; /* Strict design rule: border-radius 0 everywhere, no exceptions */
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+/* Labels / Chips */
+.label-chip {
+  font-family: var(--font-family);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 6px 12px;
+  display: inline-block;
+}
+
+/* Standard properties for scrollbar */
+html {
+  --scrollbar-thumb: rgba(255, 255, 255, 0.2);
+  --scrollbar-track: #000000;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+/* Legacy WebKit fallback for scrollbars */
+@supports not (scrollbar-color: auto) {
+  html::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
-
-  html {
-    scroll-behavior: smooth;
-    background-color: hsl(var(--color-bg));
-    color: hsl(var(--color-text));
-    font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  html::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
   }
-
-  body {
-    @apply antialiased min-h-screen flex flex-col selection:bg-accent/30 selection:text-text;
-    background-color: hsl(var(--color-bg));
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display), sans-serif;
+  html::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
   }
 }
 
-/* Premium Gradient Mesh Background Shift Animation */
-@keyframes gradientMesh {
-  0% {
-    background-position: 0% 50%;
+/* Utility Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  50% {
-    background-position: 100% 50%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--color-accent-glow);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
   }
   100% {
-    background-position: 0% 50%;
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
   }
 }
 
-.bg-mesh {
-  background: radial-gradient(circle at 10% 20%, hsl(var(--color-accent) / 0.08) 0%, transparent 45%),
-              radial-gradient(circle at 90% 80%, hsl(var(--color-primary) / 0.08) 0%, transparent 45%),
-              radial-gradient(circle at 50% 50%, hsl(var(--color-accent) / 0.03) 0%, transparent 60%);
-  background-size: 200% 200%;
-  animation: gradientMesh 20s ease infinite;
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: hsl(var(--color-bg));
-}
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--color-surface));
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--color-muted) / 0.5);
-}
-
-/* Floating centered pill-shaped navbar custom variables and transition styles */
-:root {
-  --nav-padding-y: 0.875rem;
-  --nav-padding-x: 1.5rem;
-  --nav-max-width: 900px;
-  --nav-font-size: 0.875rem;
-  --nav-border-radius: 9999px;
-  --nav-top: 1.5rem;
-}
-
-.floating-nav {
-  position: fixed;
-  top: var(--nav-top);
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 2rem);
-  max-width: var(--nav-max-width);
-  padding: var(--nav-padding-y) var(--nav-padding-x);
-  border-radius: var(--nav-border-radius);
-  font-size: var(--nav-font-size);
-  z-index: 50;
-  
-  /* Frosted Glass — light theme */
-  background: rgba(255, 255, 255, 0.80);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-
-  transition: 
-    max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    padding 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    font-size 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.3s ease,
-    background-color 0.3s ease;
-}
-
-/* Scrolled/Compressed state overrides */
-.floating-nav.scrolled {
-  --nav-padding-y: 0.55rem;
-  --nav-padding-x: 1.25rem;
-  --nav-max-width: 620px;
-  --nav-font-size: 0.8125rem;
-  --nav-top: 1rem;
-  border-color: rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 0.92);
-}
-
-/* Secondary Navigation Links animation (smooth compression with opacity & width collapse) */
-.nav-link-secondary {
-  opacity: 1;
-  max-width: 120px;
-  overflow: hidden;
-  display: inline-flex;
-  white-space: nowrap;
-  transition: 
-    opacity 0.35s ease, 
-    max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    margin 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.floating-nav.scrolled .nav-link-secondary {
-  opacity: 0;
-  max-width: 0px;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  pointer-events: none;
-}
-
-/* ─── Partner Logos / Trust Strip ─────────────────────────────── */
-.partner-logo-img {
-  opacity: 0.65;
-  transition: opacity 0.25s ease;
-  object-fit: contain;
-}
-
-.partner-logo-img:hover {
-  opacity: 1;
-}
-
