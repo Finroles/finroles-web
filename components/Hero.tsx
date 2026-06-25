@@ -92,7 +92,7 @@ export default function Hero() {
         </div>
 
         <div className={styles.trustRow}>
-          <span>500+ Companies</span>
+          <span>50+ Companies</span>
           <span className={styles.dot}>·</span>
           <span>AI-Matched Candidates</span>
           <span className={styles.dot}>·</span>

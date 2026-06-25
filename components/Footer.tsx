@@ -21,10 +21,10 @@ export default function Footer() {
 
           <div className={styles.socials}>
             {/* LinkedIn Icon */}
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.linkedin.com/company/finroles/"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
               className={styles.socialLink}
             >
@@ -32,20 +32,6 @@ export default function Footer() {
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                 <rect x="2" y="9" width="4" height="12" />
                 <circle cx="4" cy="4" r="2" />
-              </svg>
-            </a>
-
-            {/* Twitter (X) Icon */}
-            <a 
-              href="https://twitter.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Twitter"
-              className={styles.socialLink}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square">
-                <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
               </svg>
             </a>
           </div>

@@ -1,98 +1,121 @@
 .marqueeSection {
   background-color: #ffffff;
-  padding: var(--space-64) var(--space-24);
+  padding: var(--space-64) 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 }
 
 .container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .label {
   text-align: center;
-  color: rgba(0, 0, 0, 0.45);
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
   color: #111111;
-  margin-bottom: var(--space-48);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-40);
+  opacity: 0.85;
 }
 
-/* 2 rows × 3 columns */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px var(--space-24);
+.marqueeWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Linear gradients on sides for fade effect matching the white background */
+.marqueeWrapper::before,
+.marqueeWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marqueeWrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.marqueeWrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
 }
 
 .logoCell {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-24);
-  min-height: 140px;
-  transition: opacity 300ms ease;
+  width: 360px;
+  height: 180px;
+  padding: 0 var(--space-32);
+  flex-shrink: 0;
 }
 
 .logoCell:hover {
-  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
-/* Greyscale by default, full color on hover */
-.logoImg {
+.imageContainer {
+  position: relative;
   width: 100%;
-  max-width: 260px;
   height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImg {
   object-fit: contain;
   filter: grayscale(100%);
   opacity: 0.5;
-  transition: filter 350ms ease, opacity 350ms ease;
+  transition: filter 350ms ease, opacity 350ms ease, transform 350ms ease;
 }
 
-/* Large logo variant for first 4 logos */
-.logoCellLarge {
-  min-height: 200px;
-}
-
-.logoImgLarge {
-  max-width: 100%;
-  width: 100%;
-  height: 160px;
-}
-
-.logoCell:hover .logoImg,
-.logoCell:hover .logoImgLarge {
+.logoCell:hover .logoImg {
   filter: grayscale(0%);
   opacity: 1;
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
   .marqueeSection {
-    padding: var(--space-48) var(--space-16);
+    padding: var(--space-48) 0;
   }
 
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-16);
+  .label {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-24);
   }
 
   .logoCell {
-    padding: var(--space-16);
-    min-height: 100px;
+    width: 260px;
+    height: 120px;
+    padding: 0 var(--space-16);
   }
 
-  .logoCellLarge {
-    min-height: 140px;
+  .imageContainer {
+    height: 64px;
   }
+}
 
-  .logoImg {
-    max-width: 180px;
-    height: 72px;
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
   }
-
-  .logoImgLarge {
-    height: 110px;
+  100% {
+    transform: translateX(-50%);
   }
 }
