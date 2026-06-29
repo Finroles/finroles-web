@@ -63,11 +63,7 @@
 .card:nth-child(5) { animation-delay: 400ms; }
 .card:nth-child(6) { animation-delay: 500ms; }
 
-.card:hover {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 24px var(--color-accent-glow);
-  transform: scale(1.01);
-}
+
 
 .iconWrapper {
   display: flex;

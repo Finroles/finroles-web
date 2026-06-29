@@ -57,10 +57,7 @@
   transition: border-color 300ms ease, box-shadow 300ms ease;
 }
 
-.visionCard:hover, .missionCard:hover {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 24px var(--color-accent-glow);
-}
+
 
 .cardLabel {
   font-size: 0.75rem;
@@ -138,10 +135,7 @@
   transition: border-color 300ms ease, box-shadow 300ms ease;
 }
 
-.pillarCard:hover {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 24px var(--color-accent-glow);
-}
+
 
 .pillarNumber {
   font-size: 2rem;

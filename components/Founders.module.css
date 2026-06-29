@@ -55,10 +55,7 @@
   position: relative;
 }
 
-.card:hover {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 24px var(--color-accent-glow);
-}
+
 
 .imageWrapper {
   flex-shrink: 0;
@@ -79,9 +76,7 @@
   transition: border-color 300ms ease;
 }
 
-.card:hover .founderImage {
-  border-color: var(--color-accent);
-}
+
 
 .placeholderImage {
   width: 100%;
@@ -99,10 +94,7 @@
   font-weight: 700;
 }
 
-.card:hover .placeholderImage {
-  border-color: var(--color-accent);
-  color: var(--color-text-primary);
-}
+
 
 .scanline {
   position: absolute;

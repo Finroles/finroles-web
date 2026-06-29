@@ -16,7 +16,7 @@ const TESTIMONIALS: TestimonialItem[] = [
     id: 't1',
     quote:
       '"We trusted Finroles with a very strategic hiring for CFO. We were so impressed with the services that we outsourced our entire recruitment function to them. 70-80% of our employees have been referred by Finroles and they are playing a strategic role in our growth."',
-    author: 'Anupam Mittal',
+    author: 'Anupam Kumar',
     role: 'Founder',
     company: 'Minimines',
   },
