@@ -1,6 +1,9 @@
 'use client';
 
-import { useInView } from '@/hooks/useInView';
+import { useRef } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import RevealText from './RevealText';
+import revealStyles from './reveal.module.css';
 import styles from './Features.module.css';
 
 interface FeatureItem {
@@ -82,25 +85,46 @@ const FEATURES: FeatureItem[] = [
   },
 ];
 
-export default function Features() {
-  const [sectionRef, isVisible] = useInView<HTMLDivElement>({ threshold: 0.1 });
+function FeatureCard({ feature, index }: { feature: FeatureItem; index: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isVisible = useScrollReveal(cardRef);
 
   return (
-    <section id="features" className={styles.featuresSection} ref={sectionRef}>
+    <div
+      ref={cardRef}
+      className={`${styles.card} ${isVisible ? revealStyles.visible : revealStyles.hidden}`}
+      style={{
+        transitionDelay: `${(index % 3) * 100}ms`
+      }}
+    >
+      <div className={styles.iconWrapper}>
+        {feature.icon}
+      </div>
+      <h3 className={styles.cardTitle}>{feature.title}</h3>
+      <p className={styles.cardDescription}>{feature.description}</p>
+    </div>
+  );
+}
+
+export default function Features() {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const isHeaderVisible = useScrollReveal(headerRef);
+
+  return (
+    <section id="features" className={styles.featuresSection}>
       <div className={styles.container}>
-        <div className={`${styles.header} ${isVisible ? styles.visible : ''}`}>
-          <h2 className={styles.heading}>Everything your hiring team needs</h2>
+        <div ref={headerRef} className={styles.header}>
+          <RevealText
+            text="Everything your hiring team needs"
+            tag="h2"
+            className={styles.heading}
+            isVisible={isHeaderVisible}
+          />
         </div>
 
-        <div className={`${styles.grid} ${isVisible ? styles.visible : ''}`}>
+        <div className={styles.grid}>
           {FEATURES.map((feature, index) => (
-            <div key={feature.id} className={styles.card} style={{ '--index': index } as React.CSSProperties}>
-              <div className={styles.iconWrapper}>
-                {feature.icon}
-              </div>
-              <h3 className={styles.cardTitle}>{feature.title}</h3>
-              <p className={styles.cardDescription}>{feature.description}</p>
-            </div>
+            <FeatureCard key={feature.id} feature={feature} index={index} />
           ))}
         </div>
       </div>

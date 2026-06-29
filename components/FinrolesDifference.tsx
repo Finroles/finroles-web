@@ -1,6 +1,9 @@
 'use client';
 
-import { useInView } from '@/hooks/useInView';
+import { useRef } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import RevealText from './RevealText';
+import revealStyles from './reveal.module.css';
 import styles from './FinrolesDifference.module.css';
 
 interface DifferenceItem {
@@ -30,26 +33,43 @@ const DIFFERENCES: DifferenceItem[] = [
   },
 ];
 
-export default function FinrolesDifference() {
-  const [sectionRef, isVisible] = useInView<HTMLDivElement>({ threshold: 0.15 });
+function DiffItem({ item, index }: { item: DifferenceItem; index: number }) {
+  const itemRef = useRef<HTMLDivElement>(null);
+  const isVisible = useScrollReveal(itemRef);
 
   return (
-    <section id="finroles-difference" className={styles.differenceSection} ref={sectionRef}>
+    <div
+      ref={itemRef}
+      className={`${styles.item} ${isVisible ? revealStyles.visible : revealStyles.hidden}`}
+      style={{
+        transitionDelay: `${(index % 3) * 100}ms`
+      }}
+    >
+      <h3 className={styles.itemTitle}>{item.title}</h3>
+      <p className={styles.itemDescription}>{item.description}</p>
+    </div>
+  );
+}
+
+export default function FinrolesDifference() {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const isHeaderVisible = useScrollReveal(headerRef);
+
+  return (
+    <section id="finroles-difference" className={styles.differenceSection}>
       <div className={styles.container}>
-        <div className={`${styles.header} ${isVisible ? styles.visible : ''}`}>
-          <h2 className={styles.heading}>The Finroles Difference</h2>
+        <div ref={headerRef} className={styles.header}>
+          <RevealText
+            text="The finroles Difference"
+            tag="h2"
+            className={styles.heading}
+            isVisible={isHeaderVisible}
+          />
         </div>
 
-        <div className={`${styles.list} ${isVisible ? styles.visible : ''}`}>
+        <div className={styles.list}>
           {DIFFERENCES.map((item, index) => (
-            <div
-              key={item.id}
-              className={styles.item}
-              style={{ '--index': index } as React.CSSProperties}
-            >
-              <h3 className={styles.itemTitle}>{item.title}</h3>
-              <p className={styles.itemDescription}>{item.description}</p>
-            </div>
+            <DiffItem key={item.id} item={item} index={index} />
           ))}
         </div>
       </div>

@@ -12,18 +12,12 @@
 }
 
 .header {
-  opacity: 0;
-  transform: translateY(24px);
   text-align: center;
   margin-bottom: var(--space-64);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-16);
-}
-
-.header.visible {
-  animation: cardFadeUp 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .heading {
@@ -40,30 +34,19 @@
 }
 
 .card {
-  opacity: 0;
-  transform: translateY(24px);
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
   padding: var(--space-32);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+  transition: border-color 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Stagger card load animations on visibility */
-.grid.visible .card {
-  animation: cardFadeUp 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.card:hover {
+  transform: scale(1.025) translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.15);
 }
-
-.card:nth-child(1) { animation-delay: 0ms; }
-.card:nth-child(2) { animation-delay: 100ms; }
-.card:nth-child(3) { animation-delay: 200ms; }
-.card:nth-child(4) { animation-delay: 300ms; }
-.card:nth-child(5) { animation-delay: 400ms; }
-.card:nth-child(6) { animation-delay: 500ms; }
-
-
 
 .iconWrapper {
   display: flex;
@@ -125,3 +108,5 @@
     padding: var(--space-24);
   }
 }
+
+

@@ -1,67 +1,94 @@
 'use client';
 
+import { useRef } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useInView } from '@/hooks/useInView';
+import RevealText from './RevealText';
+import revealStyles from './reveal.module.css';
 import styles from './HowItWorks.module.css';
 
-export default function HowItWorks() {
-  const [sectionRef, isVisible] = useInView<HTMLDivElement>({ threshold: 0.15 });
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+}
+
+const STEPS: Step[] = [
+  {
+    number: '01',
+    title: 'Initial Consultation',
+    description: 'A thorough discussion to understand business requirements.',
+  },
+  {
+    number: '02',
+    title: 'Customized Talent Mapping',
+    description: 'Utilizing tailored strategies to identify the right candidates.',
+  },
+  {
+    number: '03',
+    title: 'Interviews & Assessments',
+    description: 'Rigorous evaluation to ensure the best fit for business requirements.',
+  },
+  {
+    number: '04',
+    title: 'Regular Updates & Feedback',
+    description: 'Regular checks with company and candidate to improve alignment.',
+  },
+];
+
+function StepCard({ step, index }: { step: Step; index: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isVisible = useScrollReveal(cardRef);
 
   return (
-    <section id="how-it-works" className={styles.howItWorksSection} ref={sectionRef}>
+    <div
+      ref={cardRef}
+      className={`${styles.step} ${isVisible ? revealStyles.visible : revealStyles.hidden}`}
+      style={{
+        transitionDelay: `${(index % 4) * 80}ms`,
+      }}
+    >
+      <div className={styles.numberWrapper}>
+        <div className={styles.number}>{step.number}</div>
+      </div>
+      <h3 className={styles.stepTitle}>{step.title}</h3>
+      <p className={styles.stepDescription}>{step.description}</p>
+    </div>
+  );
+}
+
+export default function HowItWorks() {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const isHeaderVisible = useScrollReveal(headerRef);
+  const [wrapperRef, isWrapperVisible] = useInView<HTMLDivElement>({ threshold: 0.1 });
+
+  return (
+    <section id="how-it-works" className={styles.howItWorksSection}>
       <div className={styles.container}>
-        <div className={`${styles.header} ${isVisible ? styles.visible : ''}`}>
-          <h2 className={styles.heading}>Hire in four steps</h2>
+        <div ref={headerRef} className={styles.header}>
+          <RevealText
+            text="Hire in four steps"
+            tag="h2"
+            className={styles.heading}
+            isVisible={isHeaderVisible}
+          />
         </div>
 
-        <div className={`${styles.stepsWrapper} ${isVisible ? styles.visible : ''}`}>
+        <div
+          ref={wrapperRef}
+          className={`${styles.stepsWrapper} ${isWrapperVisible ? styles.visible : ''}`}
+        >
           {/* Animated connector line */}
           <div className={styles.lineBg}>
             <div className={styles.lineFill} />
           </div>
 
           <div className={styles.stepsContainer}>
-            <div className={styles.step}>
-              <div className={styles.numberWrapper}>
-                <div className={styles.number}>01</div>
-              </div>
-              <h3 className={styles.stepTitle}>Initial Consultation</h3>
-              <p className={styles.stepDescription}>
-                A thorough discussion to understand business requirements.
-              </p>
-            </div>
-
-            <div className={styles.step}>
-              <div className={styles.numberWrapper}>
-                <div className={styles.number}>02</div>
-              </div>
-              <h3 className={styles.stepTitle}>Customized Talent Mapping</h3>
-              <p className={styles.stepDescription}>
-                Utilizing tailored strategies to identify the right candidates.
-              </p>
-            </div>
-
-            <div className={styles.step}>
-              <div className={styles.numberWrapper}>
-                <div className={styles.number}>03</div>
-              </div>
-              <h3 className={styles.stepTitle}>Interviews & Assessments</h3>
-              <p className={styles.stepDescription}>
-                Rigorous evaluation to ensure the best fit for business requirements.
-              </p>
-            </div>
-
-            <div className={styles.step}>
-              <div className={styles.numberWrapper}>
-                <div className={styles.number}>04</div>
-              </div>
-              <h3 className={styles.stepTitle}>Regular Updates & Feedback</h3>
-              <p className={styles.stepDescription}>
-                Regular checks with company and candidate to improve alignment.
-              </p>
-            </div>
+            {STEPS.map((step, index) => (
+              <StepCard key={step.number} step={step} index={index} />
+            ))}
           </div>
         </div>
-
       </div>
     </section>
   );

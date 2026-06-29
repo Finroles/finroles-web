@@ -12,18 +12,12 @@
 }
 
 .header {
-  opacity: 0;
-  transform: translateY(24px);
   text-align: center;
   margin-bottom: var(--space-64);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-16);
-}
-
-.header.visible {
-  animation: diffFadeUp 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .heading {
@@ -41,23 +35,15 @@
 
 /* Each feature item */
 .item {
-  opacity: 0;
-  transform: translateY(20px);
   border-left: 2px solid var(--color-accent);
   padding-left: 24px;
   background: none;
-  transition: box-shadow 250ms ease;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms ease;
 }
 
-.list.visible .item {
-  animation: diffFadeUp 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.item:hover {
+  transform: scale(1.02) translateX(4px);
 }
-
-.item:nth-child(1) { animation-delay: 100ms; }
-.item:nth-child(2) { animation-delay: 250ms; }
-.item:nth-child(3) { animation-delay: 400ms; }
-
-
 
 .itemTitle {
   font-size: 1.25rem;
@@ -94,3 +80,5 @@
     font-size: 2rem;
   }
 }
+
+

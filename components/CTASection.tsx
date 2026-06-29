@@ -1,18 +1,30 @@
 'use client';
 
-import { useInView } from '@/hooks/useInView';
+import { useRef } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import RevealText from './RevealText';
+import revealStyles from './reveal.module.css';
 import styles from './CTASection.module.css';
 
 export default function CTASection() {
-  const [sectionRef, isVisible] = useInView<HTMLDivElement>({ threshold: 0.15 });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isVisible = useScrollReveal(containerRef);
 
   return (
-    <section id="contact" className={styles.ctaSection} ref={sectionRef}>
+    <section id="contact" className={styles.ctaSection}>
       {/* Animated dot grid background */}
       <div className={styles.dotGrid} />
       
-      <div className={`${styles.container} ${isVisible ? styles.visible : ''}`}>
-        <h2 className={styles.heading}>Ready to hire smarter?</h2>
+      <div
+        ref={containerRef}
+        className={`${styles.container} ${isVisible ? revealStyles.visible : revealStyles.hidden}`}
+      >
+        <RevealText
+          text="Ready to hire smarter?"
+          tag="h2"
+          className={styles.heading}
+          isVisible={isVisible}
+        />
         <p className={styles.subtext}>
           Join teams using Finroles to cut time-to-hire by 40%.
         </p>

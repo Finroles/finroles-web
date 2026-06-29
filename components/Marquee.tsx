@@ -10,6 +10,10 @@ const LOGOS = [
   { src: '/ekvity.png',           alt: 'Ekvity' },
   { src: '/minimines.png',        alt: 'Minimines' },
   { src: '/yourgrowthlabs.webp',  alt: 'Your Growth Labs' },
+  { src: '/8i.jpeg',              alt: '8i Ventures' },
+  { src: '/guarsteel.jpeg',       alt: 'Guar Steel' },
+  { src: '/kodo.png',             alt: 'Kodo' },
+  { src: '/zinc.jpeg',            alt: 'Zinc' },
 ];
 
 export default function Marquee() {

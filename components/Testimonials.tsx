@@ -1,6 +1,9 @@
 'use client';
 
-import { useInView } from '@/hooks/useInView';
+import { useRef } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import RevealText from './RevealText';
+import revealStyles from './reveal.module.css';
 import styles from './Testimonials.module.css';
 
 interface TestimonialItem {
@@ -38,31 +41,48 @@ const TESTIMONIALS: TestimonialItem[] = [
   },
 ];
 
-export default function Testimonials() {
-  const [sectionRef, isVisible] = useInView<HTMLDivElement>({ threshold: 0.1 });
+function TestimonialCard({ item, index }: { item: TestimonialItem; index: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isVisible = useScrollReveal(cardRef);
 
   return (
-    <section id="testimonials" className={styles.testimonialsSection} ref={sectionRef}>
+    <div
+      ref={cardRef}
+      className={`${styles.card} ${isVisible ? revealStyles.visible : revealStyles.hidden}`}
+      style={{
+        transitionDelay: `${(index % 3) * 100}ms`
+      }}
+    >
+      <p className={styles.quote}>{item.quote}</p>
+      <div className={styles.authorInfo}>
+        <span className={styles.authorName}>{item.author}</span>
+        <span className={styles.authorRole}>
+          {item.role} · <span className={styles.companyName}>{item.company}</span>
+        </span>
+      </div>
+    </div>
+  );
+}
+
+export default function Testimonials() {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const isHeaderVisible = useScrollReveal(headerRef);
+
+  return (
+    <section id="testimonials" className={styles.testimonialsSection}>
       <div className={styles.container}>
-        <div className={`${styles.header} ${isVisible ? styles.visible : ''}`}>
-          <h2 className={styles.heading}>What our clients say</h2>
+        <div ref={headerRef} className={styles.header}>
+          <RevealText
+            text="What our clients say"
+            tag="h2"
+            className={styles.heading}
+            isVisible={isHeaderVisible}
+          />
         </div>
 
-        <div className={`${styles.grid} ${isVisible ? styles.visible : ''}`}>
+        <div className={styles.grid}>
           {TESTIMONIALS.map((item, index) => (
-            <div
-              key={item.id}
-              className={styles.card}
-              style={{ '--index': index } as React.CSSProperties}
-            >
-              <p className={styles.quote}>{item.quote}</p>
-              <div className={styles.authorInfo}>
-                <span className={styles.authorName}>{item.author}</span>
-                <span className={styles.authorRole}>
-                  {item.role} · <span className={styles.companyName}>{item.company}</span>
-                </span>
-              </div>
-            </div>
+            <TestimonialCard key={item.id} item={item} index={index} />
           ))}
         </div>
       </div>

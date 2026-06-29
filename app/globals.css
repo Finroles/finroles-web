@@ -11,6 +11,8 @@
   --color-text-muted: #8A9BB0;
   --color-accent: #2563EB;
   --color-accent-glow: rgba(37, 99, 235, 0.15);
+  --anim-duration: 0.6s;
+  --anim-ease: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Spacing Grid (8px grid) */
   --space-8: 8px;
@@ -134,3 +136,5 @@ html {
     transform: translateX(-50%);
   }
 }
+
+
